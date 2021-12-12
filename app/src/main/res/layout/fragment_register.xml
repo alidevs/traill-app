@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/frameLayout"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white"
+	tools:context=".ui.auth.RegisterFragment">
+
+	<ImageView
+		android:id="@+id/imageView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="26dp"
+		android:src="@drawable/ic_traill_logo"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<TextView
+		android:id="@+id/textView3"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:fontFamily="@font/lexend_font"
+		android:text="Create an account"
+		android:textAllCaps="true"
+		android:textColor="@color/battleship_grey"
+		android:textFontWeight="400"
+		android:textSize="13sp"
+		app:layout_constraintStart_toStartOf="@+id/imageView"
+		app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/registerFullnameTextField"
+		style="@style/auth_style"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="76dp"
+		android:layout_marginEnd="30dp"
+		android:hint="Full Name"
+		app:endIconDrawable="@drawable/ic_user_name_icon"
+		app:endIconMode="custom"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+		<com.google.android.material.textfield.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="14sp" />
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/registerEmailTextField"
+		style="@style/auth_style"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginEnd="30dp"
+		android:hint="Email Address"
+		app:endIconDrawable="@drawable/ic_email_icon"
+		app:endIconMode="custom"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/registerFullnameTextField">
+
+		<com.google.android.material.textfield.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="14sp" />
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/registerPasswordTextField"
+		style="@style/auth_style"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginEnd="30dp"
+		android:hint="Password"
+		app:endIconDrawable="@drawable/ic_password_icon"
+		app:endIconMode="custom"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/registerEmailTextField">
+
+		<com.google.android.material.textfield.TextInputEditText
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="14sp" />
+	</com.google.android.material.textfield.TextInputLayout>
+
+	<androidx.appcompat.widget.AppCompatButton
+		android:id="@+id/singUpButton"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginEnd="30dp"
+		android:background="@drawable/fancy_button_selector"
+		android:elevation="2dp"
+		android:paddingStart="64dp"
+		android:paddingEnd="64dp"
+		android:text="Sign up"
+		android:textColor="@color/black"
+		android:textFontWeight="500"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/registerPasswordTextField" />
+
+	<TextView
+		android:id="@+id/loginTextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginEnd="30dp"
+		android:clickable="true"
+		android:focusable="true"
+		android:fontFamily="@font/lexend_font"
+		android:text="Login"
+		android:textAllCaps="true"
+		android:textColor="@color/ebony_clay"
+		android:textFontWeight="600"
+		android:textSize="12sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/singUpButton" />
+
+	<LinearLayout
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="30dp"
+		android:layout_marginTop="30dp"
+		android:layout_marginEnd="30dp"
+		android:orientation="horizontal"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/loginTextView">
+
+		<View
+			style="@style/HorizontalLine"
+			android:layout_gravity="center"
+			android:layout_weight="1" />
+
+		<TextView
+			android:id="@+id/textView2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:fontFamily="@font/lexend_font"
+			android:textFontWeight="400"
+			android:textSize="12sp"
+			android:gravity="center"
+			android:text="OR"
+			android:textColor="@color/battleship_grey" />
+
+		<View
+			style="@style/HorizontalLine"
+			android:layout_gravity="center"
+			android:layout_weight="1" />
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

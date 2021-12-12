@@ -14,13 +14,17 @@
 		android:theme="@style/Theme.Traill"
 		tools:targetApi="31">
 		<activity
-			android:name=".MainActivity"
+			android:name="com.alidevs.traill.ui.auth.AuthActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
+		</activity>
+		<activity
+			android:name="com.alidevs.traill.ui.view.activity.MainActivity"
+			android:exported="true">
 		</activity>
 	</application>
 
