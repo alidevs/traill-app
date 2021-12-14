@@ -1,6 +1,7 @@
 package com.alidevs.traill.data.repository
 
 import com.alidevs.traill.data.firebase.FirebaseService
+import com.alidevs.traill.data.model.UserModel
 
 class AuthRepository {
 
@@ -8,9 +9,7 @@ class AuthRepository {
 
 	fun login(email: String, password: String) = firebaseService.login(email, password)
 
-	fun register(email: String, password: String) = firebaseService.register(email, password)
-
-	fun logout() = firebaseService.logout()
+	fun register(user: UserModel) = firebaseService.register(user)
 
 	fun getCurrentUser() = firebaseService.getCurrentUser()
 

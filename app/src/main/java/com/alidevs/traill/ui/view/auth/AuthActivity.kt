@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.auth
+package com.alidevs.traill.ui.view.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +7,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.alidevs.traill.databinding.ActivityAuthBinding
-import com.alidevs.traill.ui.view.activity.MainActivity
-import com.alidevs.traill.ui.viewmodel.AuthViewModel
+import com.alidevs.traill.ui.view.home.MainActivity
 
 class AuthActivity : AppCompatActivity(), AuthListener {
 

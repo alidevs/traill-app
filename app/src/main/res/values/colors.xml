@@ -2,6 +2,7 @@
 <resources>
 	<color name="white_smoke">#F6F6F6</color>
 	<color name="ebony_clay">#1F2C3C</color>
+	<color name="river_bed">#3D4A5A</color>
 	<color name="saffron_mango">#FFC069</color>
 	<color name="battleship_grey">#828282</color>
 	<color name="dawn_pink">#EBEBEB</color>

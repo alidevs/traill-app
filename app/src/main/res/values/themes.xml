@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 	<!-- Base application theme. -->
-	<style name="Theme.Traill" parent="carbon_Theme.Light.NoActionBar">
+	<style name="Theme.Traill" parent="Theme.MaterialComponents.Light.NoActionBar">
 		<!-- Primary brand color. -->
 		<item name="colorPrimary">@color/ebony_clay</item>
 		<item name="colorPrimaryVariant">@color/saffron_mango</item>
@@ -11,18 +11,43 @@
 		<item name="colorOnSecondary">@color/black</item>
 		<!-- Status bar color. -->
 		<item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+		<item name="toolbarStyle">@style/MainToolbarStyle</item>
 	</style>
 
+	<!-- Auth TextFields -->
 	<style name="auth_style" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 		<item name="boxStrokeColor">?colorOnSurface</item>
 		<item name="strokeWidth">0.25dp</item>
 		<item name="boxBackgroundColor">@color/white_smoke</item>
 	</style>
 
+	<!-- Horizontal Line -->
 	<style name="HorizontalLine">
 		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">0.6dp</item>
+		<item name="android:layout_height">0.1px</item>
 		<item name="android:background">@color/battleship_grey</item>
 	</style>
 
+	<!-- Main Toolbar -->
+	<style name="MainToolbarStyle" parent="Widget.AppCompat.Toolbar">
+		<item name="android:background">@android:color/transparent</item>
+		<item name="titleTextAppearance">@style/MainToolbarTitleStyle</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:contentDescription">@string/app_name</item>
+	</style>
+
+	<!-- Main Toolbar Title -->
+	<style name="MainToolbarTitleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+		<item name="android:textSize">14sp</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:textAlignment">center</item>
+	</style>
+
+	<!-- Navigation Drawer Items -->
+	<style name="NavItems" parent="Widget.AppCompat.TextView">
+		<item name="android:textSize">13sp</item>
+		<item name="android:textAlignment">center</item>
+		<item name="fontFamily">@font/lexend_font</item>
+	</style>
 </resources>
