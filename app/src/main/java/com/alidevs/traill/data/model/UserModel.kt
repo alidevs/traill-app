@@ -1,6 +1,6 @@
 package com.alidevs.traill.data.model
 
-import com.alidevs.traill.utils.Role
+import com.alidevs.traill.data.enums.Role
 
 data class UserModel(
 	val fullname: String,

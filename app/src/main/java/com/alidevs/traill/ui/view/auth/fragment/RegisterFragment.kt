@@ -11,7 +11,7 @@ import com.alidevs.traill.R
 import com.alidevs.traill.data.model.UserModel
 import com.alidevs.traill.databinding.FragmentRegisterBinding
 import com.alidevs.traill.ui.view.auth.AuthViewModel
-import com.alidevs.traill.utils.Role
+import com.alidevs.traill.data.enums.Role
 import com.alidevs.traill.utils.isValidEmail
 import com.alidevs.traill.utils.isValidFullname
 import com.alidevs.traill.utils.isValidPassword

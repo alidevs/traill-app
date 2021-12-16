@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.alidevs.traill.databinding.FragmentRequestRideBinding
 import com.alidevs.traill.ui.view.home.RequestRide.MapsActivity
+import com.alidevs.traill.utils.LocationService
 
 class RequestRideFragment : Fragment() {
 	
 	private lateinit var binding: FragmentRequestRideBinding
+	private lateinit var locationService: LocationService
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +26,31 @@ class RequestRideFragment : Fragment() {
 		binding.currentLocationContainer.setOnClickListener { currentLocationContainerPressed() }
 		binding.destinationLocationContainer.setOnClickListener { destinationLocationContainerPressed() }
 		
+		locationService = LocationService.getInstance()
+		locationService.getLastKnownLocation(requireActivity())
+		
 		return binding.root
+	}
+	
+	override fun onStart() {
+		super.onStart()
+		setupRequestRideUi()
+	}
+	
+	private fun setupRequestRideUi() {
+		val trip = locationService.getTrip()
+		val currentLocation = trip.currentLocation
+		val destinationLocation = trip.destinationLocation
+		
+		currentLocation?.let {
+			val currentAddress = locationService.getAddressFromLocation(requireActivity(), it)
+			binding.currentLocationAddressTextView.text = currentAddress
+		}
+		
+		destinationLocation?.let {
+			val destinationAddress = locationService.getAddressFromLocation(requireActivity(), it)
+			binding.destinationLocationAddressTextView.text = destinationAddress
+		}
 	}
 	
 	private fun destinationLocationContainerPressed() {
@@ -33,7 +59,11 @@ class RequestRideFragment : Fragment() {
 	}
 	
 	private fun currentLocationContainerPressed() {
-		Toast.makeText(activity, "Current location", Toast.LENGTH_SHORT).show()
+		Toast.makeText(
+			activity,
+			LocationService.getInstance().getTrip().toString(),
+			Toast.LENGTH_SHORT
+		).show()
 	}
 	
 	companion object {

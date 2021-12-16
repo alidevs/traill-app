@@ -1,12 +1,10 @@
 package com.alidevs.traill.ui.view.home.RequestRide
 
 import android.os.Bundle
-import android.telecom.Call
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alidevs.traill.R
+import com.alidevs.traill.data.enums.MapsAction
 import com.alidevs.traill.databinding.ActivityMapsBinding
 import com.alidevs.traill.utils.LocationService
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -35,9 +33,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 			.findFragmentById(R.id.map) as SupportMapFragment
 		mapFragment.getMapAsync(this)
 		
-		binding.mapsBackButton.setOnClickListener {
-			finish()
-		}
+		binding.mapsBackButton.setOnClickListener { finish() }
+		
+		binding.confirmLocationButton.setOnClickListener { finish() }
 	}
 	
 	override fun onMapReady(googleMap: GoogleMap) {
@@ -49,17 +47,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 			mMap.addMarker(MarkerOptions().position(latLng)).apply {
 				title = locationService.getAddressFromLocation(this@MapsActivity, latLng)
 			}
+			
 			placeMarker(latLng)
 			updateUi(latLng)
+			
+			locationService.updateTrip(MapsAction.DESTINATION_LOCATION, latLng)
 		}
 	}
 	
 	// Get last known location and place marker on map
-	private fun getLastKnownLocation() {
+	private fun getLastKnownLocation(): LatLng {
 		val lastKnownLocation = locationService.getLastKnownLocation(this)
 		val latLng = LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)
 		placeMarker(latLng)
 		updateUi(latLng)
+		
+		return latLng
 	}
 	
 	// Update UI with current location
@@ -74,7 +77,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 	// Place the marker at location
 	private fun placeMarker(location: LatLng) {
 		mMap.clear()
-		mMap.addMarker(MarkerOptions().position(location).title("Your Location"))
+		mMap.addMarker(MarkerOptions().position(location).title("Destination"))
 		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 14.5f))
 		
 		updateUi(location)
