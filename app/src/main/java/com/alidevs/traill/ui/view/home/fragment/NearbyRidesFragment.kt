@@ -1,10 +1,10 @@
 package com.alidevs.traill.ui.view.home.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.alidevs.traill.databinding.FragmentNearbyRidesBinding
 import com.alidevs.traill.ui.view.home.NearbyRidesAdapter
 
@@ -19,8 +19,22 @@ class NearbyRidesFragment : Fragment() {
 		// Inflate the layout for this fragment
 		binding = FragmentNearbyRidesBinding.inflate(inflater, container, false)
 		
-		val data = listOf("Red", "Green", "Blue", "Yellow", "Black", "White", "Pink", "Orange", "Purple", "Grey", "Brown", "Cyan", "Magenta")
-		binding.nearbyRidesRecyclerView.adapter = NearbyRidesAdapter(data)
+		// list of colors
+		val list = listOf(
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red",
+			"red"
+		)
+		binding.nearbyRidesRecyclerView.adapter = NearbyRidesAdapter(list)
 		
 		return binding.root
 	}

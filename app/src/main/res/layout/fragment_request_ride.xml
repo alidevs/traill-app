@@ -36,7 +36,7 @@
 		app:layout_constraintTop_toBottomOf="@id/textView4">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
-			android:id="@+id/constraintLayout"
+			android:id="@+id/current_location_container"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="?selectableItemBackground"
@@ -94,9 +94,10 @@
 			android:background="@color/battleship_grey"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+			app:layout_constraintTop_toBottomOf="@+id/current_location_container" />
 
 		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/destination_location_container"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:background="?selectableItemBackground"
@@ -106,7 +107,7 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+			app:layout_constraintTop_toBottomOf="@id/current_location_container">
 
 			<ImageView
 				android:id="@+id/imageView3"

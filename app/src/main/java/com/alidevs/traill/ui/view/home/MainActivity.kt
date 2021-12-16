@@ -3,6 +3,7 @@ package com.alidevs.traill.ui.view.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -38,7 +39,10 @@ class MainActivity : AppCompatActivity() {
 		drawerHeaderBinding.navHeaderLogoutButton.setOnClickListener { logoutButtonPressed() }
 		
 		setupDrawerContent()
-		
+		if (firebaseService.getCurrentUser() == null) {
+			startActivity(Intent(this, AuthActivity::class.java))
+			finish()
+		}
 	}
 	
 	private fun logoutButtonPressed() {
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 	
 	private fun segueToAuthActivity() {
 		val intent = Intent(this, AuthActivity::class.java)
+		intent.putExtra("from_logout", true)
 		startActivity(intent)
 		finish()
 	}

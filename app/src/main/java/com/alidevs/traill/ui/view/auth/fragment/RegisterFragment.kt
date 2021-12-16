@@ -11,6 +11,7 @@ import com.alidevs.traill.R
 import com.alidevs.traill.data.model.UserModel
 import com.alidevs.traill.databinding.FragmentRegisterBinding
 import com.alidevs.traill.ui.view.auth.AuthViewModel
+import com.alidevs.traill.utils.Role
 import com.alidevs.traill.utils.isValidEmail
 import com.alidevs.traill.utils.isValidFullname
 import com.alidevs.traill.utils.isValidPassword
@@ -44,7 +45,7 @@ class RegisterFragment : Fragment() {
 		val password = binding.registerPasswordTextField.editText?.text.toString().trim()
 
 		if (email.isValidEmail() && password.isValidPassword() && fullname.isValidFullname()) {
-			val user = UserModel(fullname, email, password)
+			val user = UserModel(fullname, email, password, Role.PASSENGER)
 			viewModel.register(user)
 		} else {
 			Toast.makeText(context, "One or more inputs is invalid", Toast.LENGTH_SHORT).show()

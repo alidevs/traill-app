@@ -29,6 +29,7 @@
 		android:clickable="true"
 		android:elevation="3dp"
 		android:focusable="true"
+		android:foreground="?selectableItemBackground"
 		android:minWidth="34dp"
 		android:minHeight="34dp"
 		android:src="@drawable/ic_hamburger_menu_icon"
