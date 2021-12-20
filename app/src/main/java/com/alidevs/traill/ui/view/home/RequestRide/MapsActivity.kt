@@ -1,8 +1,10 @@
 package com.alidevs.traill.ui.view.home.RequestRide
 
-import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.alidevs.traill.R
 import com.alidevs.traill.data.enums.MapsAction
@@ -16,10 +18,13 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.maps.android.PolyUtil
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 	
+	private val viewModel: MapsViewModel by viewModels()
 	private lateinit var binding: ActivityMapsBinding
+	
 	private lateinit var mMap: GoogleMap
 	private lateinit var locationService: LocationService
 	
@@ -40,6 +45,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		
 		binding.mapsBackButton.setOnClickListener { finish() }
 		
+		
+		
 		binding.confirmLocationButton.setOnClickListener {
 			finish()
 		}
@@ -56,10 +63,28 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 			destinationMarker = mMap.addMarker(markerOptions)!!
 			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.5f))
 			
-			val options = PolylineOptions().apply {
-				color(Color.RED)
-				width(5f)
+			val originString = locationService.getLatLngString()
+			val destinationString =
+				"${destinationMarker.position.latitude},${destinationMarker.position.longitude}"
+			
+			val directionsMutableComputableLiveData =
+				viewModel.getDirections(originString, destinationString)
+			
+			directionsMutableComputableLiveData.observe(this) { directionsResponse ->
+				Toast.makeText(this, directionsResponse.status, Toast.LENGTH_SHORT).show()
+				if (directionsResponse.status == "OK") {
+					val polylineOptions = PolylineOptions().apply {
+						addAll(PolyUtil.decode(directionsResponse.routes[0].overview_polyline.points))
+						width(8f)
+						color(R.color.saffron_mango)
+					}
+					
+					mMap.addPolyline(polylineOptions)
+				} else {
+					Log.i("MapsActivity", "onMapReady: ${directionsResponse.status}")
+				}
 			}
+			
 			
 			updateUi(latLng)
 			

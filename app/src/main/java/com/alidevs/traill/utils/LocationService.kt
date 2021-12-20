@@ -43,8 +43,6 @@ class LocationService {
 			MapsAction.DESTINATION_LOCATION -> trip.destinationLocation = latLng
 		}
 		
-		Log.d("LocationService", "Trip updated: $trip")
-		
 		return trip
 	}
 	
@@ -105,6 +103,10 @@ class LocationService {
 			)
 		}
 		
+	}
+	
+	fun getLatLngString(): String {
+		return trip.currentLocation?.latitude.toString() + "," + (trip.currentLocation?.longitude)
 	}
 	
 	fun getTrip() = trip

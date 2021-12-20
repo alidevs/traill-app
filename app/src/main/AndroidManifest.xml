@@ -27,10 +27,6 @@
 			android:exported="false"
 			android:label="@string/title_activity_maps" />
 		<activity
-			android:name=".ui.MapsActivity"
-			android:exported="false"
-			android:label="@string/title_activity_maps" />
-		<activity
 			android:name=".ui.view.auth.AuthActivity"
 			android:exported="true" />
 		<activity
