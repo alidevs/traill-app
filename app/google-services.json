@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "563866413322",
+    "project_id": "traill-app-81c41",
+    "storage_bucket": "traill-app-81c41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563866413322:android:7faf0bd313330bad0cb2f3",
+        "android_client_info": {
+          "package_name": "com.alidevs.traill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563866413322-dqqb49b7jck96c1jppm620t0e42oas70.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDYgS1MTfGesA2REckMbKGWnSFwhn6YHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563866413322-dqqb49b7jck96c1jppm620t0e42oas70.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

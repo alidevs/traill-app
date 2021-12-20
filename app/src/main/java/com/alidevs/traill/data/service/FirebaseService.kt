@@ -1,4 +1,4 @@
-package com.alidevs.traill.data.firebase
+package com.alidevs.traill.data.service
 
 import com.alidevs.traill.data.model.UserModel
 import com.google.firebase.auth.UserProfileChangeRequest

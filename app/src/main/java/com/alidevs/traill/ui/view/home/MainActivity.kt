@@ -3,12 +3,11 @@ package com.alidevs.traill.ui.view.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.alidevs.traill.R
-import com.alidevs.traill.data.firebase.FirebaseService
+import com.alidevs.traill.data.service.FirebaseService
 import com.alidevs.traill.databinding.ActivityMainBinding
 import com.alidevs.traill.databinding.NavHeaderBinding
 import com.alidevs.traill.ui.view.auth.AuthActivity

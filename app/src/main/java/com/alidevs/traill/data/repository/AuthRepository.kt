@@ -1,6 +1,6 @@
 package com.alidevs.traill.data.repository
 
-import com.alidevs.traill.data.firebase.FirebaseService
+import com.alidevs.traill.data.service.FirebaseService
 import com.alidevs.traill.data.model.UserModel
 
 class AuthRepository {
