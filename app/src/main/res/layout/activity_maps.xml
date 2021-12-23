@@ -23,10 +23,10 @@
 		android:layout_marginStart="20dp"
 		android:layout_marginTop="20dp"
 		android:background="@drawable/nav_menu_button_selector"
-		android:foreground="?selectableItemBackground"
 		android:clickable="true"
 		android:elevation="4dp"
 		android:focusable="true"
+		android:foreground="?selectableItemBackground"
 		android:minWidth="34dp"
 		android:minHeight="34dp"
 		android:src="@drawable/ic_back_icon"
@@ -49,20 +49,21 @@
 		android:id="@+id/location_dialog_constraintLayout"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_margin="16dp"
+		android:layout_margin="20dp"
 		android:background="@drawable/main_card_shape"
 		android:elevation="4dp"
-		android:padding="10dp"
+		android:padding="16dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent">
 
 		<LinearLayout
 			android:id="@+id/linearLayout3"
-			android:layout_width="0dp"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:orientation="horizontal"
 			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_bias="1.0"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent">
 
@@ -74,18 +75,24 @@
 				android:fontFamily="@font/lexend_font"
 				android:gravity="center"
 				android:text="TextView"
+				android:textAlignment="center"
 				android:textColor="@color/battleship_grey"
+				android:textFontWeight="400"
 				android:textSize="13sp" />
 
 			<TextView
 				android:id="@+id/textView6"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
 				android:layout_weight="0.25"
 				android:fontFamily="@font/lexend_font"
 				android:gravity="center"
 				android:text="•"
+				android:textAlignment="center"
 				android:textColor="@color/battleship_grey"
+				android:textFontWeight="400"
 				android:textSize="13sp" />
 
 			<TextView
@@ -96,7 +103,9 @@
 				android:fontFamily="@font/lexend_font"
 				android:gravity="center"
 				android:text="TextView"
+				android:textAlignment="center"
 				android:textColor="@color/battleship_grey"
+				android:textFontWeight="400"
 				android:textSize="13sp" />
 		</LinearLayout>
 
@@ -104,8 +113,8 @@
 			android:id="@+id/constraintLayout"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="24dp"
-			android:layout_marginBottom="24dp"
+			android:layout_marginTop="16dp"
+			android:layout_marginBottom="16dp"
 			app:layout_constraintBottom_toTopOf="@+id/confirmLocationButton"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
@@ -128,10 +137,9 @@
 					android:id="@+id/imageView2"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
-					android:layout_marginTop="27dp"
-					android:layout_marginBottom="27dp"
-					android:src="@drawable/dot_symbol"
+					android:layout_marginTop="24dp"
+					android:layout_marginBottom="24dp"
+					android:src="@drawable/ic_donut_dot"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent" />
@@ -143,7 +151,8 @@
 					android:fontFamily="@font/lexend_font"
 					android:text="Current Location"
 					android:textColor="@color/battleship_grey"
-					android:textSize="14sp"
+					android:textFontWeight="500"
+					android:textSize="11sp"
 					app:layout_constraintBottom_toTopOf="@+id/current_location_address_textView"
 					app:layout_constraintStart_toStartOf="@+id/current_location_address_textView"
 					app:layout_constraintTop_toTopOf="parent" />
@@ -190,10 +199,9 @@
 					android:id="@+id/imageView3"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="16dp"
-					android:layout_marginTop="27dp"
-					android:layout_marginBottom="27dp"
-					android:src="@drawable/dot_symbol"
+					android:layout_marginTop="24dp"
+					android:layout_marginBottom="24dp"
+					android:src="@drawable/ic_donut_dot"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent"
@@ -206,7 +214,8 @@
 					android:fontFamily="@font/lexend_font"
 					android:text="Destination"
 					android:textColor="@color/battleship_grey"
-					android:textSize="14sp"
+					android:textFontWeight="500"
+					android:textSize="11sp"
 					app:layout_constraintBottom_toTopOf="@+id/destination_location_address_textView"
 					app:layout_constraintStart_toStartOf="@+id/destination_location_address_textView"
 					app:layout_constraintTop_toTopOf="parent" />
