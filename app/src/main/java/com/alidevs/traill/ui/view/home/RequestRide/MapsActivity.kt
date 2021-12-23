@@ -1,19 +1,15 @@
 package com.alidevs.traill.ui.view.home.RequestRide
 
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.alidevs.traill.R
-import com.alidevs.traill.data.enums.MapsAction
 import com.alidevs.traill.databinding.ActivityMapsBinding
 import com.alidevs.traill.utils.LocationService
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -28,7 +24,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 	private lateinit var mMap: GoogleMap
 	private lateinit var locationService: LocationService
 	
-	private lateinit var pickupMarker: Marker
+	private lateinit var originMarker: Marker
 	private lateinit var destinationMarker: Marker
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +33,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		binding = ActivityMapsBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
-		locationService = LocationService.getInstance()
+		locationService = LocationService.instance
 		
 		val mapFragment = supportFragmentManager
 			.findFragmentById(R.id.map) as SupportMapFragment
 		mapFragment.getMapAsync(this)
 		
 		binding.mapsBackButton.setOnClickListener { finish() }
-		
 		
 		
 		binding.confirmLocationButton.setOnClickListener {
@@ -54,64 +49,77 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 	
 	override fun onMapReady(googleMap: GoogleMap) {
 		mMap = googleMap
-		getLastKnownLocation()
+		updateUi()
 		
-		mMap.setOnMapClickListener { latLng ->
+		mMap.setOnMapClickListener { destinationLatLng ->
 			if (::destinationMarker.isInitialized) destinationMarker.remove()
-			
-			val markerOptions = MarkerOptions().position(latLng).title("Destination location")
-			destinationMarker = mMap.addMarker(markerOptions)!!
-			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.5f))
+			binding.progressBar2.visibility = View.VISIBLE
 			
 			val originString = locationService.getLatLngString()
-			val destinationString =
-				"${destinationMarker.position.latitude},${destinationMarker.position.longitude}"
+			val destinationString = "${destinationLatLng.latitude},${destinationLatLng.longitude}"
 			
-			val directionsMutableComputableLiveData =
+			val directionsLiveData =
 				viewModel.getDirections(originString, destinationString)
 			
-			directionsMutableComputableLiveData.observe(this) { directionsResponse ->
-				Toast.makeText(this, directionsResponse.status, Toast.LENGTH_SHORT).show()
-				if (directionsResponse.status == "OK") {
-					val polylineOptions = PolylineOptions().apply {
-						addAll(PolyUtil.decode(directionsResponse.routes[0].overview_polyline.points))
-						width(8f)
-						color(R.color.saffron_mango)
-					}
-					
-					mMap.addPolyline(polylineOptions)
-				} else {
+			directionsLiveData.observe(this) { directionsResponse ->
+				if (directionsResponse.status != "OK") {
 					Log.i("MapsActivity", "onMapReady: ${directionsResponse.status}")
+					return@observe
 				}
+				
+				// Create a PolylineOptions object and add points
+				drawRoute(directionsResponse.routes[0].overview_polyline.points)
+				
+				LocationService.trip.destination = destinationLatLng
+				updateUi()
 			}
 			
-			
-			updateUi(latLng)
-			
-			locationService.updateTrip(MapsAction.DESTINATION_LOCATION, latLng)
 		}
 	}
 	
-	// Get last known location and place marker on map
-	private fun getLastKnownLocation(): LatLng {
-		val lastKnownLocation = locationService.getLastKnownLocation(this)
-		val latLng = LatLng(lastKnownLocation.latitude, lastKnownLocation.longitude)
-		mMap.clear()
-		val markerOptions = MarkerOptions().position(latLng).title("Current location")
-		pickupMarker = mMap.addMarker(markerOptions)!!
-		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.5f))
-		updateUi(latLng)
+	private fun drawRoute(points: String) {
+		val polylineOptions = PolylineOptions().apply {
+			// TODO: Remove lines from map when a new destination is selected
+			addAll(PolyUtil.decode(points))
+			width(8f)
+			color(R.color.saffron_mango)
+		}
 		
-		return latLng
+		mMap.addPolyline(polylineOptions)
 	}
 	
-	// Update UI with current location
-	private fun updateUi(currentLocation: LatLng) {
+	// Update UI with selected locations
+	private fun updateUi() {
 		binding.progressBar2.visibility = View.GONE
-		binding.locationDetailsConstraintLayout.visibility = View.VISIBLE
+		val offset = 0.0065f
 		
-		binding.currentLocationTextView.text =
-			locationService.getAddressFromLocation(this@MapsActivity, currentLocation)
+		with(LocationService.trip) {
+			origin?.let { latLng ->
+				val markerOptions = MarkerOptions().position(latLng).title("Current location")
+				originMarker = mMap.addMarker(markerOptions)!!
+				val cameraPosition = LatLng(latLng.latitude - offset, latLng.longitude)
+				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPosition, 14.5f))
+				
+				binding.currentLocationAddressTextView.text =
+					locationService.getAddressFromLocation(this@MapsActivity, latLng)
+			}
+			
+			destination?.let { latLng ->
+				val markerOptions = MarkerOptions().position(latLng).title("Destination location")
+				destinationMarker = mMap.addMarker(markerOptions)!!
+				val cameraPosition = LatLng(latLng.latitude - offset, latLng.longitude)
+				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPosition, 14.5f))
+				
+				binding.destinationLocationAddressTextView.text =
+					locationService.getAddressFromLocation(this@MapsActivity, latLng)
+			}
+			
+			if (listOfNotNull(origin, destination).size == 2) {
+				val distance = distance
+				binding.distanceTextView.text = String.format("%.2f km", distance)
+				binding.estimatePriceTextView.text = String.format("%.1f SR", fare)
+			}
+		}
 	}
 	
 }

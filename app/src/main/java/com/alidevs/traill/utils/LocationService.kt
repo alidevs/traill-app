@@ -7,43 +7,24 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
-import android.util.Log
 import androidx.core.app.ActivityCompat
-import com.alidevs.traill.data.enums.MapsAction
 import com.alidevs.traill.data.model.Trip
 import com.google.android.gms.maps.model.LatLng
 import java.io.IOException
 
 class LocationService {
 	
-	// Companion object to allow for static access to the class
 	companion object {
-		private var locationService: LocationService? = null
-		private var trip = Trip()
+		var instance = LocationService()
+		var trip = Trip()
 		
 		var lastKnownLocation: LatLng? = null
 			set(value) {
 				field = value
 				if (field != null) {
-					trip.currentLocation = value
+					trip.origin = value
 				}
 			}
-		
-		fun getInstance(): LocationService {
-			if (locationService == null) {
-				locationService = LocationService()
-			}
-			return locationService!!
-		}
-	}
-	
-	fun updateTrip(mapsAction: MapsAction, latLng: LatLng): Trip {
-		when (mapsAction) {
-			MapsAction.CURRENT_LOCATION -> trip.currentLocation = latLng
-			MapsAction.DESTINATION_LOCATION -> trip.destinationLocation = latLng
-		}
-		
-		return trip
 	}
 	
 	fun getLastKnownLocation(activity: Activity): LatLng {
@@ -106,9 +87,7 @@ class LocationService {
 	}
 	
 	fun getLatLngString(): String {
-		return trip.currentLocation?.latitude.toString() + "," + (trip.currentLocation?.longitude)
+		return trip.origin?.latitude.toString() + "," + (trip.origin?.longitude)
 	}
-	
-	fun getTrip() = trip
 	
 }

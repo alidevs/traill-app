@@ -1,14 +1,31 @@
 package com.alidevs.traill.data.model
 
+import android.location.Location
 import com.google.android.gms.maps.model.LatLng
 
 data class Trip(
-	var currentLocation: LatLng? = null,
-	var destinationLocation: LatLng? = null,
-	val distance: Double? = null,
+	var origin: LatLng? = null,
+	var destination: LatLng? = null,
 	val duration: Double? = null,
 ) {
-	override fun toString(): String {
-		return "cl: $currentLocation, dl: $destinationLocation, di: $distance, du: $duration"
-	}
+	val distance: Double?
+		get() = origin?.let { origin ->
+			destination?.let { destination ->
+				val result = FloatArray(1)
+				Location.distanceBetween(
+					origin.latitude,
+					origin.longitude,
+					destination.latitude,
+					destination.longitude,
+					result
+				)
+				val resultInKilometers = result[0] / 1000
+				resultInKilometers.toDouble()
+			}
+		}
+	
+	val fare: Double?
+		get() = distance?.let { distance ->
+			distance * 3
+		}
 }

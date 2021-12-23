@@ -2,7 +2,6 @@ package com.alidevs.traill.ui.view.home.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,7 @@ class RequestRideFragment : Fragment() {
 		binding.currentLocationContainer.setOnClickListener { currentLocationContainerPressed() }
 		binding.destinationLocationContainer.setOnClickListener { destinationLocationContainerPressed() }
 		
-		locationService = LocationService.getInstance()
+		locationService = LocationService.instance
 		locationService.getLastKnownLocation(requireActivity())
 		
 		return binding.root
@@ -39,9 +38,9 @@ class RequestRideFragment : Fragment() {
 	}
 	
 	private fun setupRequestRideUi() {
-		val trip = locationService.getTrip()
-		val currentLocation = trip.currentLocation
-		val destinationLocation = trip.destinationLocation
+		val trip = LocationService.trip
+		val currentLocation = trip.origin
+		val destinationLocation = trip.destination
 		
 		currentLocation?.let {
 			val currentAddress = locationService.getAddressFromLocation(requireActivity(), it)
@@ -62,7 +61,7 @@ class RequestRideFragment : Fragment() {
 	private fun currentLocationContainerPressed() {
 		Toast.makeText(
 			activity,
-			locationService.getTrip().toString(),
+			LocationService.trip.origin.toString(),
 			Toast.LENGTH_SHORT
 		).show()
 	}

@@ -20,11 +20,13 @@ class NearbyRidesAdapter constructor(private var data: List<String> = listOf()) 
 		val inflater = LayoutInflater.from(parent.context)
 		binding = NearbyRidesRowBinding.inflate(inflater, parent, false)
 		
+		Log.d("NJ", "Hi")
+		
 		return ViewHolder(binding.root)
 	}
 	
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-		holder.bind(data[position])
+//		holder.bind(data[position])
 		Log.d("NearbyRidesAdapter", "onBindViewHolder: $position")
 	}
 	
@@ -39,6 +41,7 @@ class NearbyRidesAdapter constructor(private var data: List<String> = listOf()) 
 	inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 		fun bind(item: String) = with(binding) {
 			// Set data to your item view here
+			binding.driverNameTextView.text = item
 			
 			itemView.setOnClickListener {
 				onClick(item)
@@ -48,6 +51,7 @@ class NearbyRidesAdapter constructor(private var data: List<String> = listOf()) 
 		private fun onClick(item: String) {
 		
 		}
+		
 	}
 	
 }
