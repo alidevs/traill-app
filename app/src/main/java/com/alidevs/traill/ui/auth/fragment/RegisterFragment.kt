@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.auth.fragment
+package com.alidevs.traill.ui.auth.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.alidevs.traill.R
 import com.alidevs.traill.data.model.UserModel
 import com.alidevs.traill.databinding.FragmentRegisterBinding
-import com.alidevs.traill.ui.view.auth.AuthViewModel
+import com.alidevs.traill.ui.auth.AuthViewModel
 import com.alidevs.traill.data.enums.Role
 import com.alidevs.traill.utils.isValidEmail
 import com.alidevs.traill.utils.isValidFullname

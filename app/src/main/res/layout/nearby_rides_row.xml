@@ -14,7 +14,7 @@
 	android:foreground="?selectableItemBackground">
 
 	<TextView
-		android:id="@+id/driver_name_textView"
+		android:id="@+id/row_driver_name_textView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="16dp"
@@ -77,7 +77,7 @@
 		android:layout_marginTop="1dp"
 		android:orientation="vertical"
 		app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-		app:layout_constraintStart_toStartOf="@+id/driver_name_textView"
+		app:layout_constraintStart_toStartOf="@+id/row_driver_name_textView"
 		app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
 		<LinearLayout
@@ -104,12 +104,12 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
-					android:text="TextView"
+					android:text="Pickup Point"
 					android:textColor="@color/battleship_grey"
 					android:textSize="11sp" />
 
 				<TextView
-					android:id="@+id/textView15"
+					android:id="@+id/row_pickup_point_textView"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
@@ -150,12 +150,12 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
-					android:text="TextView"
+					android:text="Destination"
 					android:textColor="@color/battleship_grey"
 					android:textSize="11sp" />
 
 				<TextView
-					android:id="@+id/textView17"
+					android:id="@+id/row_destination_textView"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"

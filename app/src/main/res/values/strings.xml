@@ -4,4 +4,5 @@
 	<string name="hello_blank_fragment">Hello blank fragment</string>
 	<string name="title_activity_request_ride">RequestRideActivity</string>
 	<string name="title_activity_maps">MapsActivity</string>
+	<string name="GOOGLE_API_KEY">AIzaSyCdyN3bq3L8Tsko45Jn2uM5CTRdfR-CatM</string>
 </resources>

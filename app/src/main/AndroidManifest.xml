@@ -20,17 +20,17 @@
 		tools:targetApi="31">
 		<meta-data
 			android:name="com.google.android.geo.API_KEY"
-			android:value="AIzaSyCdyN3bq3L8Tsko45Jn2uM5CTRdfR-CatM" />
+			android:value="@string/GOOGLE_API_KEY" />
 
 		<activity
-			android:name=".ui.view.home.RequestRide.MapsActivity"
+			android:name="com.alidevs.traill.ui.home.RequestRide.MapsActivity"
 			android:exported="false"
 			android:label="@string/title_activity_maps" />
 		<activity
-			android:name=".ui.view.auth.AuthActivity"
+			android:name="com.alidevs.traill.ui.auth.AuthActivity"
 			android:exported="true" />
 		<activity
-			android:name=".ui.view.home.MainActivity"
+			android:name="com.alidevs.traill.ui.home.MainActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

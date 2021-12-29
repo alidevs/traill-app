@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.home
+package com.alidevs.traill.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,16 +7,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.alidevs.traill.R
-import com.alidevs.traill.data.service.FirebaseService
+import com.alidevs.traill.data.service.AuthService
 import com.alidevs.traill.databinding.ActivityMainBinding
 import com.alidevs.traill.databinding.NavHeaderBinding
-import com.alidevs.traill.ui.view.auth.AuthActivity
-import com.alidevs.traill.ui.view.home.fragment.HomeFragment
-import com.alidevs.traill.ui.view.home.fragment.NavBarFragment
-import com.alidevs.traill.ui.view.profile.ProfileFragment
+import com.alidevs.traill.ui.auth.AuthActivity
+import com.alidevs.traill.ui.driverDashboard.DriverDashboardFragment
+import com.alidevs.traill.ui.home.fragment.HomeFragment
+import com.alidevs.traill.ui.home.fragment.NavBarFragment
+import com.alidevs.traill.ui.profile.ProfileFragment
+import com.google.android.material.navigation.NavigationView
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 	
 	private lateinit var binding: ActivityMainBinding
 	
@@ -25,23 +27,48 @@ class MainActivity : AppCompatActivity() {
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
-		val firebaseService = FirebaseService.getInstance()
+		val authService = AuthService.getInstance()
 		
 		// Navigation Drawer header
 		val drawerHeaderBinding =
 			NavHeaderBinding.bind(binding.navigationView.getHeaderView(0))
 		
-		drawerHeaderBinding.navHeaderEmailTextView.text = firebaseService.getCurrentUser()?.email
+		drawerHeaderBinding.navHeaderEmailTextView.text = authService.getCurrentUser()?.email
 		drawerHeaderBinding.navHeaderFullnameTextView.text =
-			firebaseService.getCurrentUser()?.displayName
+			authService.getCurrentUser()?.displayName
 		
 		drawerHeaderBinding.navHeaderLogoutButton.setOnClickListener { logoutButtonPressed() }
 		
-		setupDrawerContent()
-		if (firebaseService.getCurrentUser() == null) {
+		binding.navigationView.setNavigationItemSelectedListener(this)
+		
+		if (authService.getCurrentUser() == null) {
 			startActivity(Intent(this, AuthActivity::class.java))
 			finish()
 		}
+	}
+	
+	override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
+		when (menuItem.itemId) {
+			R.id.menu_home_item -> HomeFragment.newInstance()
+			R.id.menu_profile_item -> ProfileFragment.newInstance()
+			R.id.driver_dashboard_item -> DriverDashboardFragment.newInstance()
+			else -> null
+		}?.let { fragment ->
+			setToolbarTitle(menuItem.title.toString())
+			
+			supportFragmentManager.beginTransaction()
+				.replace(R.id.main_fragment_container, fragment)
+				.commit()
+			
+			menuItem.isChecked = true
+			
+			// Close the navigation drawer when an item is selected.
+			binding.drawerLayout.closeDrawers()
+			
+			return true
+		}
+		
+		return false
 	}
 	
 	private fun logoutButtonPressed() {
@@ -50,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 		alertDialog.setMessage("Are you sure you want to logout?")
 		
 		alertDialog.setPositiveButton("Yes") { _, _ ->
-			FirebaseService.getInstance().logout()
+			AuthService.getInstance().logout()
 			segueToAuthActivity()
 		}
 		
@@ -64,35 +91,6 @@ class MainActivity : AppCompatActivity() {
 		intent.putExtra("from_logout", true)
 		startActivity(intent)
 		finish()
-	}
-	
-	private fun setupDrawerContent() {
-		binding.navigationView.setNavigationItemSelectedListener { menuItem ->
-			selectDrawerItem(menuItem)
-			true
-		}
-	}
-	
-	private fun selectDrawerItem(menuItem: MenuItem) {
-		val fragment = when (menuItem.itemId) {
-			R.id.menu_profile_item -> {
-				setToolbarTitle(menuItem.title.toString())
-				ProfileFragment.newInstance()
-			}
-			else -> {
-				setToolbarTitle(menuItem.title.toString())
-				HomeFragment.newInstance()
-			}
-		}
-		
-		supportFragmentManager.beginTransaction()
-			.replace(R.id.main_fragment_container, fragment)
-			.commit()
-		
-		menuItem.isChecked = true
-		
-		// Close the navigation drawer when an item is selected.
-		binding.drawerLayout.closeDrawers()
 	}
 	
 	private fun setToolbarTitle(title: String) {

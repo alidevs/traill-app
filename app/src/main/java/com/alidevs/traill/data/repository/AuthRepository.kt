@@ -1,16 +1,16 @@
 package com.alidevs.traill.data.repository
 
-import com.alidevs.traill.data.service.FirebaseService
+import com.alidevs.traill.data.service.AuthService
 import com.alidevs.traill.data.model.UserModel
 
 class AuthRepository {
 
-	private val firebaseService = FirebaseService.getInstance()
+	private val authService = AuthService.getInstance()
 
-	fun login(email: String, password: String) = firebaseService.login(email, password)
+	fun login(email: String, password: String) = authService.login(email, password)
 
-	fun register(user: UserModel) = firebaseService.register(user)
+	fun register(user: UserModel) = authService.register(user)
 
-	fun getCurrentUser() = firebaseService.getCurrentUser()
+	fun getCurrentUser() = authService.getCurrentUser()
 
 }

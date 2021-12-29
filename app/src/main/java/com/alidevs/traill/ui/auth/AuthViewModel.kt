@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.auth
+package com.alidevs.traill.ui.auth
 
 import androidx.lifecycle.ViewModel
 import com.alidevs.traill.data.model.UserModel

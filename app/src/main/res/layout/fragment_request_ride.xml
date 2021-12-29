@@ -5,7 +5,7 @@
 	android:id="@+id/frameLayout3"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	tools:context=".ui.view.home.fragment.RequestRideFragment">
+	tools:context=".ui.home.fragment.RequestRideFragment">
 
 	<TextView
 		android:id="@+id/textView4"

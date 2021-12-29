@@ -1,5 +1,6 @@
 package com.alidevs.traill.data.api
 
+import com.alidevs.traill.BuildConfig
 import com.alidevs.traill.data.model.directionsresponse.DirectionsResponse
 import okhttp3.OkHttpClient
 import retrofit2.Response
@@ -27,7 +28,7 @@ interface GoogleDirectionsApi {
 							chain.request().url().newBuilder()
 								.addQueryParameter(
 									"key",
-									"AIzaSyCdyN3bq3L8Tsko45Jn2uM5CTRdfR-CatM"
+									BuildConfig.GOOGLE_API_KEY
 								)
 								.build()
 						chain.proceed(chain.request().newBuilder().url(url).build())

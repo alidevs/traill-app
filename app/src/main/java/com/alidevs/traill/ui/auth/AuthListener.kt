@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.auth
+package com.alidevs.traill.ui.auth
 
 interface AuthListener {
 	fun onStarted()

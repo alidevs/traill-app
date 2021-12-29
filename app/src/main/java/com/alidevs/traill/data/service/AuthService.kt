@@ -8,10 +8,10 @@ import com.google.firebase.ktx.Firebase
 import io.reactivex.Completable
 import io.reactivex.CompletableEmitter
 
-class FirebaseService private constructor() {
+class AuthService private constructor() {
 	
 	private val auth = Firebase.auth
-	private val firestore = Firebase.firestore
+	val firestore = Firebase.firestore
 	
 	fun register(user: UserModel) = Completable.create { emitter ->
 		auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -77,11 +77,11 @@ class FirebaseService private constructor() {
 	}
 	
 	companion object {
-		private var instance: FirebaseService? = null
+		private var instance: AuthService? = null
 		
-		fun getInstance(): FirebaseService {
+		fun getInstance(): AuthService {
 			if (instance == null) {
-				instance = FirebaseService()
+				instance = AuthService()
 			}
 			return instance!!
 		}

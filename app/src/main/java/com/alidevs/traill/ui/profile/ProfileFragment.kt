@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.profile
+package com.alidevs.traill.ui.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

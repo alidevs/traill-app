@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.auth.fragment
+package com.alidevs.traill.ui.auth.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.alidevs.traill.R
 import com.alidevs.traill.databinding.FragmentLoginBinding
-import com.alidevs.traill.ui.view.auth.AuthViewModel
+import com.alidevs.traill.ui.auth.AuthViewModel
 import com.alidevs.traill.utils.isValidEmail
 import com.alidevs.traill.utils.isValidPassword
 
@@ -21,7 +21,7 @@ class LoginFragment : Fragment() {
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View? {
+	): View {
 		binding = FragmentLoginBinding.inflate(inflater, container, false)
 
 		binding.loginButton.setOnClickListener { signInButtonPressed() }

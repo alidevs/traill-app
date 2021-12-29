@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.home.RequestRide
+package com.alidevs.traill.ui.home.RequestRide
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.alidevs.traill.R
 import com.alidevs.traill.databinding.ActivityMapsBinding
-import com.alidevs.traill.utils.LocationService
+import com.alidevs.traill.data.service.LocationService
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

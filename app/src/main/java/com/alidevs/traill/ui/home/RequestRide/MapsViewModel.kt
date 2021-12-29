@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.home.RequestRide
+package com.alidevs.traill.ui.home.RequestRide
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

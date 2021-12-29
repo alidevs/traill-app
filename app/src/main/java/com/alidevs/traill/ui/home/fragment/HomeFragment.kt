@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.view.home.fragment
+package com.alidevs.traill.ui.home.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
