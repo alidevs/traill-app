@@ -3,10 +3,13 @@ package com.alidevs.traill.ui.home.RequestRide
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.alidevs.traill.R
+import com.alidevs.traill.data.model.Ride
+import com.alidevs.traill.data.repository.AuthRepository
 import com.alidevs.traill.databinding.ActivityMapsBinding
 import com.alidevs.traill.data.service.LocationService
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -14,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.google.firebase.firestore.GeoPoint
 import com.google.maps.android.PolyUtil
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -42,8 +46,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		
 		binding.mapsBackButton.setOnClickListener { finish() }
 		
-		
 		binding.confirmLocationButton.setOnClickListener {
+			val userDisplayName = AuthRepository().getCurrentUser()!!.displayName
+			val trip = LocationService.trip
+			val ride = Ride().apply {
+				name = userDisplayName
+				origin = GeoPoint(trip.origin!!.latitude, trip.origin!!.longitude)
+				destination = GeoPoint(trip.destination!!.latitude, trip.destination!!.longitude)
+				distance = trip.distance
+				fare = trip.fare
+			}
+
+			viewModel.createRide(ride)
+			Toast.makeText(this, "createRide", Toast.LENGTH_SHORT).show()
 			finish()
 		}
 	}

@@ -30,8 +30,20 @@ class FirestoreService private constructor() {
 				}
 			}
 	}
-	
-	companion object {
+
+    fun createRide(ride: Ride) = Completable.create { emitter ->
+		db.collection("rides")
+			.add(ride)
+			.addOnCompleteListener { task ->
+				if (task.isSuccessful) {
+					emitter.onComplete()
+				} else {
+					emitter.onError(task.exception!!)
+				}
+			}
+	}
+
+    companion object {
 		private var instance: FirestoreService? = null
 		
 		fun getInstance(): FirestoreService {

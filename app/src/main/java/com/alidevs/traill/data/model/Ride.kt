@@ -1,12 +1,11 @@
 package com.alidevs.traill.data.model
 
-import com.alidevs.traill.data.model.directionsresponse.Distance
 import com.google.firebase.firestore.GeoPoint
 
-data class Ride (
-	val name: String? = null,
-	val origin: GeoPoint? = null,
-	val destination: GeoPoint? = null,
-	val distance: Double? = null,
-	val fare: Double? = null
+data class Ride(
+    var name: String? = null,
+    var origin: GeoPoint? = null,
+    var destination: GeoPoint? = null,
+    var distance: Double? = null,
+    var fare: Double? = null
 )

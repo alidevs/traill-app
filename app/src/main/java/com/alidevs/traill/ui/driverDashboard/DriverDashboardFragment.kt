@@ -31,7 +31,6 @@ class DriverDashboardFragment : Fragment() {
 		
 		val disposable = firestoreRepository.getRides()
 			.subscribe { ridesList ->
-				Toast.makeText(activity, "${ridesList.size}", Toast.LENGTH_SHORT).show()
 				for (ride in ridesList) {
 					ride?.let {
 						adapter.addRide(it)
