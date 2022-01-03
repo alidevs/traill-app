@@ -6,7 +6,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@color/white_smoke"
-	tools:context=".ui.home.MainActivity">
+	tools:context=".ui.main.MainActivity">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="match_parent"
@@ -14,7 +14,7 @@
 
 		<androidx.fragment.app.FragmentContainerView
 			android:id="@+id/main_nav_fragment_container"
-			android:name="com.alidevs.traill.ui.home.fragment.NavBarFragment"
+			android:name="com.alidevs.traill.ui.main.NavBarFragment"
 			android:layout_width="0dp"
 			android:layout_height="70dp"
 			android:minHeight="?actionBarSize"
@@ -24,7 +24,7 @@
 
 		<androidx.fragment.app.FragmentContainerView
 			android:id="@+id/main_fragment_container"
-			android:name="com.alidevs.traill.ui.home.fragment.HomeFragment"
+			android:name="com.alidevs.traill.ui.home.HomeFragment"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
 			app:layout_constraintBottom_toBottomOf="parent"

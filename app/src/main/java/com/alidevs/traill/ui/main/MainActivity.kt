@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.home
+package com.alidevs.traill.ui.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,7 @@ import com.alidevs.traill.databinding.ActivityMainBinding
 import com.alidevs.traill.databinding.NavHeaderBinding
 import com.alidevs.traill.ui.auth.AuthActivity
 import com.alidevs.traill.ui.dashboard.DashboardFragment
-import com.alidevs.traill.ui.home.fragment.HomeFragment
-import com.alidevs.traill.ui.home.fragment.NavBarFragment
+import com.alidevs.traill.ui.home.HomeFragment
 import com.alidevs.traill.ui.profile.ProfileFragment
 import com.google.android.material.navigation.NavigationView
 

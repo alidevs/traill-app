@@ -1,4 +1,4 @@
-package com.alidevs.traill.data.service
+package com.alidevs.traill.utils
 
 import android.app.Activity
 import android.content.Context
@@ -12,10 +12,10 @@ import com.alidevs.traill.data.model.Trip
 import com.google.android.gms.maps.model.LatLng
 import java.io.IOException
 
-class LocationService {
+class LocationHelper {
 	
 	companion object {
-		var instance = LocationService()
+		var instance = LocationHelper()
 		var trip = Trip()
 		
 		var lastKnownLocation: LatLng? = null

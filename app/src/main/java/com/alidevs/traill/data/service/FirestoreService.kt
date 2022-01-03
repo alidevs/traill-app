@@ -68,7 +68,6 @@ class FirestoreService private constructor() {
 		
 		for (bound in bounds) {
 			val query = db.collection("rides")
-				.whereEqualTo("status", "Open")
 				.orderBy("geoHash")
 				.startAt(bound.startHash)
 				.endAt(bound.endHash)

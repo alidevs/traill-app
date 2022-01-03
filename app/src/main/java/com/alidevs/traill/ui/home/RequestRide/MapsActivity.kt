@@ -11,7 +11,7 @@ import com.alidevs.traill.R
 import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.data.repository.AuthRepository
 import com.alidevs.traill.databinding.ActivityMapsBinding
-import com.alidevs.traill.data.service.LocationService
+import com.alidevs.traill.utils.LocationHelper
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -26,7 +26,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 	private lateinit var binding: ActivityMapsBinding
 	
 	private lateinit var mMap: GoogleMap
-	private lateinit var locationService: LocationService
+	private lateinit var locationHelper: LocationHelper
 	
 	private lateinit var polyline: Polyline
 	private lateinit var originMarker: Marker
@@ -38,7 +38,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		binding = ActivityMapsBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 		
-		locationService = LocationService.instance
+		locationHelper = LocationHelper.instance
 		
 		val mapFragment = supportFragmentManager
 			.findFragmentById(R.id.map) as SupportMapFragment
@@ -48,7 +48,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		
 		binding.confirmLocationButton.setOnClickListener {
 			val userDisplayName = AuthRepository().getCurrentUser()!!.displayName
-			val trip = LocationService.trip
+			val trip = LocationHelper.trip
 			val ride = Ride().apply {
 				name = userDisplayName
 				origin = GeoPoint(trip.origin!!.latitude, trip.origin!!.longitude)
@@ -72,14 +72,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		mMap.setOnMapClickListener { destinationLatLng ->
 			if (::destinationMarker.isInitialized) destinationMarker.remove()
 			binding.progressBar2.visibility = View.VISIBLE
-			LocationService.trip.destination = destinationLatLng
+			LocationHelper.trip.destination = destinationLatLng
 			drawRoute()
 		}
 	}
 	
 	private fun drawRoute() {
-		val trip = LocationService.trip
-		val originString = locationService.getLatLngString()
+		val trip = LocationHelper.trip
+		val originString = locationHelper.getLatLngString()
 		val destinationString = "${trip.destination!!.latitude},${trip.destination!!.longitude}"
 		
 		val directionsLiveData =
@@ -115,7 +115,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 		binding.progressBar2.visibility = View.GONE
 		val offset = 0.0065f
 		
-		with(LocationService.trip) {
+		with(LocationHelper.trip) {
 			origin?.let { latLng ->
 				val markerOptions = MarkerOptions().position(latLng).title("Current location")
 				originMarker = mMap.addMarker(markerOptions)!!
@@ -123,7 +123,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPosition, 14.5f))
 				
 				binding.currentLocationAddressTextView.text =
-					locationService.getAddressFromLocation(this@MapsActivity, latLng)
+					locationHelper.getAddressFromLocation(this@MapsActivity, latLng)
 			}
 			
 			destination?.let { latLng ->
@@ -133,7 +133,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cameraPosition, 14.5f))
 				
 				binding.destinationLocationAddressTextView.text =
-					locationService.getAddressFromLocation(this@MapsActivity, latLng)
+					locationHelper.getAddressFromLocation(this@MapsActivity, latLng)
 			}
 			
 			if (listOfNotNull(origin, destination).size == 2) {

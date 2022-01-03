@@ -30,7 +30,7 @@
 			android:name="com.alidevs.traill.ui.auth.AuthActivity"
 			android:exported="true" />
 		<activity
-			android:name="com.alidevs.traill.ui.home.MainActivity"
+			android:name="com.alidevs.traill.ui.main.MainActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

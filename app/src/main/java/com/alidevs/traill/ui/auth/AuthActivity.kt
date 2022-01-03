@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alidevs.traill.R
 import com.alidevs.traill.databinding.ActivityAuthBinding
 import com.alidevs.traill.ui.auth.fragment.LoginFragment
-import com.alidevs.traill.ui.home.MainActivity
+import com.alidevs.traill.ui.main.MainActivity
 
 class AuthActivity : AppCompatActivity(), AuthListener {
 	

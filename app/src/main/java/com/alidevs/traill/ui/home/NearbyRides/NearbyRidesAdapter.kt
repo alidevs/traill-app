@@ -1,9 +1,8 @@
-package com.alidevs.traill.ui.home
+package com.alidevs.traill.ui.home.NearbyRides
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.databinding.NearbyRidesRowBinding

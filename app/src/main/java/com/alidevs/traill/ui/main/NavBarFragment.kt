@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.home.fragment
+package com.alidevs.traill.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.alidevs.traill.databinding.FragmentNavBarBinding
-import com.alidevs.traill.ui.home.MainActivity
 
 class NavBarFragment : Fragment() {
 

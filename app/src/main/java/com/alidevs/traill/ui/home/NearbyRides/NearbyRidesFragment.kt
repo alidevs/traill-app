@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.home.fragment
+package com.alidevs.traill.ui.home.NearbyRides
 
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.alidevs.traill.data.repository.FirestoreRepository
-import com.alidevs.traill.data.service.LocationService
+import com.alidevs.traill.utils.LocationHelper
 import com.alidevs.traill.databinding.FragmentNearbyRidesBinding
-import com.alidevs.traill.ui.home.NearbyRidesAdapter
 import io.reactivex.disposables.CompositeDisposable
 
 class NearbyRidesFragment : Fragment() {
@@ -31,7 +30,7 @@ class NearbyRidesFragment : Fragment() {
 		
 		val firestoreRepository = FirestoreRepository()
 		
-		val lastKnownLocation = LocationService.lastKnownLocation!!
+		val lastKnownLocation = LocationHelper.lastKnownLocation!!
 		
 		val disposable = firestoreRepository.getNearbyRides(lastKnownLocation)
 			.subscribe { ride ->

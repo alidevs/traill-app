@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.home.fragment
+package com.alidevs.traill.ui.home.RequestRide
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,13 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.alidevs.traill.databinding.FragmentRequestRideBinding
-import com.alidevs.traill.ui.home.RequestRide.MapsActivity
-import com.alidevs.traill.data.service.LocationService
+import com.alidevs.traill.utils.LocationHelper
 
 class RequestRideFragment : Fragment() {
 	
 	private lateinit var binding: FragmentRequestRideBinding
-	private lateinit var locationService: LocationService
+	private lateinit var locationHelper: LocationHelper
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -27,8 +26,8 @@ class RequestRideFragment : Fragment() {
 		binding.currentLocationContainer.setOnClickListener { currentLocationContainerPressed() }
 		binding.destinationLocationContainer.setOnClickListener { destinationLocationContainerPressed() }
 		
-		locationService = LocationService.instance
-		locationService.getLastKnownLocation(requireActivity())
+		locationHelper = LocationHelper.instance
+		locationHelper.getLastKnownLocation(requireActivity())
 		
 		return binding.root
 	}
@@ -39,17 +38,17 @@ class RequestRideFragment : Fragment() {
 	}
 	
 	private fun setupRequestRideUi() {
-		val trip = LocationService.trip
+		val trip = LocationHelper.trip
 		val currentLocation = trip.origin
 		val destinationLocation = trip.destination
 		
 		currentLocation?.let {
-			val currentAddress = locationService.getAddressFromLocation(requireActivity(), it)
+			val currentAddress = locationHelper.getAddressFromLocation(requireActivity(), it)
 			binding.currentLocationAddressTextView.text = currentAddress
 		}
 		
 		destinationLocation?.let {
-			val destinationAddress = locationService.getAddressFromLocation(requireActivity(), it)
+			val destinationAddress = locationHelper.getAddressFromLocation(requireActivity(), it)
 			binding.destinationLocationAddressTextView.text = destinationAddress
 		}
 	}
@@ -62,11 +61,11 @@ class RequestRideFragment : Fragment() {
 	private fun currentLocationContainerPressed() {
 		Toast.makeText(
 			activity,
-			LocationService.trip.toString(),
+			LocationHelper.trip.toString(),
 			Toast.LENGTH_SHORT
 		).show()
 		
-		Log.i("RequestRideFragment", "currentLocationContainerPressed: ${LocationService.trip}")
+		Log.i("RequestRideFragment", "currentLocationContainerPressed: ${LocationHelper.trip}")
 	}
 	
 	companion object {
