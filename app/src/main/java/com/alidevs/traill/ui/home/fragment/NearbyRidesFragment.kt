@@ -5,9 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.alidevs.traill.data.repository.FirestoreRepository
+import com.alidevs.traill.data.service.LocationService
 import com.alidevs.traill.databinding.FragmentNearbyRidesBinding
 import com.alidevs.traill.ui.home.NearbyRidesAdapter
 import io.reactivex.disposables.CompositeDisposable
@@ -31,20 +31,16 @@ class NearbyRidesFragment : Fragment() {
 		
 		val firestoreRepository = FirestoreRepository()
 		
-		val disposable = firestoreRepository.getRides()
-			.subscribe { ridesList ->
-				for (ride in ridesList) {
-					ride?.let {
-						adapter.addRide(it)
-						Log.d("NearbyRidesFragment", "onCreateView: Added $it")
-					}
-				}
-				
+		val lastKnownLocation = LocationService.lastKnownLocation!!
+		
+		val disposable = firestoreRepository.getNearbyRides(lastKnownLocation)
+			.subscribe { ride ->
+				Log.d("NearbyRidesFragments", "onCreateView: $ride")
+				adapter.addRide(ride)
 				binding.nearbyRidesProgressBar.visibility = View.GONE
 			}
 		
 		disposabls.add(disposable)
-		
 		return binding.root
 	}
 	
