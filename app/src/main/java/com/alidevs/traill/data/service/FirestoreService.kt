@@ -22,6 +22,7 @@ class FirestoreService private constructor() {
 		val ridesList = mutableListOf<Ride?>()
 		
 		db.collection("rides")
+			.whereEqualTo("status", "Open")
 			.get()
 			.addOnCompleteListener { task ->
 				if (task.isSuccessful) {
@@ -67,6 +68,7 @@ class FirestoreService private constructor() {
 		
 		for (bound in bounds) {
 			val query = db.collection("rides")
+				.whereEqualTo("status", "Open")
 				.orderBy("geoHash")
 				.startAt(bound.startHash)
 				.endAt(bound.endHash)
