@@ -1,20 +1,19 @@
-package com.alidevs.traill.ui.driverDashboard
+package com.alidevs.traill.ui.dashboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.alidevs.traill.data.repository.FirestoreRepository
 import com.alidevs.traill.databinding.FragmentDriverDashboardBinding
 import io.reactivex.disposables.CompositeDisposable
 
-class DriverDashboardFragment : Fragment() {
+class DashboardFragment : Fragment() {
 	
 	private lateinit var binding: FragmentDriverDashboardBinding
 	
-	private lateinit var adapter: DriverDashboardAdapter
+	private lateinit var adapter: DashboardAdapter
 	
 	private val disposables = CompositeDisposable()
 	
@@ -23,7 +22,7 @@ class DriverDashboardFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View {
 		binding = FragmentDriverDashboardBinding.inflate(inflater, container, false)
-		adapter = DriverDashboardAdapter()
+		adapter = DashboardAdapter()
 		
 		binding.driverDashboardRecyclerView.adapter = adapter
 		
@@ -52,6 +51,6 @@ class DriverDashboardFragment : Fragment() {
 	
 	companion object {
 		@JvmStatic
-		fun newInstance() = DriverDashboardFragment()
+		fun newInstance() = DashboardFragment()
 	}
 }

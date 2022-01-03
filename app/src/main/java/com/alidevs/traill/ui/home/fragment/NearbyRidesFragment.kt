@@ -18,7 +18,7 @@ class NearbyRidesFragment : Fragment() {
 	
 	private lateinit var adapter: NearbyRidesAdapter
 	
-	private val disposabls = CompositeDisposable()
+	private val disposables = CompositeDisposable()
 	
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -40,13 +40,13 @@ class NearbyRidesFragment : Fragment() {
 				binding.nearbyRidesProgressBar.visibility = View.GONE
 			}
 		
-		disposabls.add(disposable)
+		disposables.add(disposable)
 		return binding.root
 	}
 	
 	override fun onDetach() {
 		super.onDetach()
-		disposabls.clear()
+		disposables.clear()
 	}
 	
 	companion object {

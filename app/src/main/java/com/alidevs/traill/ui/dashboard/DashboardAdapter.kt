@@ -1,4 +1,4 @@
-package com.alidevs.traill.ui.driverDashboard
+package com.alidevs.traill.ui.dashboard
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +8,8 @@ import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.databinding.NearbyRidesRowBinding
 import com.alidevs.traill.utils.getAddress
 
-class DriverDashboardAdapter(private val data: MutableList<Ride> = mutableListOf()) :
-	RecyclerView.Adapter<DriverDashboardAdapter.ViewHolder>() {
+class DashboardAdapter(private val data: MutableList<Ride> = mutableListOf()) :
+	RecyclerView.Adapter<DashboardAdapter.ViewHolder>() {
 	
 	// TODO: Change to DriverDashboardRowBinding
 	private lateinit var binding: NearbyRidesRowBinding

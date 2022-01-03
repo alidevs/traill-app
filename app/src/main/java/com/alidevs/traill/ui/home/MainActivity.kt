@@ -11,7 +11,7 @@ import com.alidevs.traill.data.service.AuthService
 import com.alidevs.traill.databinding.ActivityMainBinding
 import com.alidevs.traill.databinding.NavHeaderBinding
 import com.alidevs.traill.ui.auth.AuthActivity
-import com.alidevs.traill.ui.driverDashboard.DriverDashboardFragment
+import com.alidevs.traill.ui.dashboard.DashboardFragment
 import com.alidevs.traill.ui.home.fragment.HomeFragment
 import com.alidevs.traill.ui.home.fragment.NavBarFragment
 import com.alidevs.traill.ui.profile.ProfileFragment
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 		when (menuItem.itemId) {
 			R.id.menu_home_item -> HomeFragment.newInstance()
 			R.id.menu_profile_item -> ProfileFragment.newInstance()
-			R.id.driver_dashboard_item -> DriverDashboardFragment.newInstance()
+			R.id.driver_dashboard_item -> DashboardFragment.newInstance()
 			else -> null
 		}?.let { fragment ->
 			setToolbarTitle(menuItem.title.toString())
