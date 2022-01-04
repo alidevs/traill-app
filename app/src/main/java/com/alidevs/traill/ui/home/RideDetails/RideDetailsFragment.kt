@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.databinding.FragmentRideDetailsBinding
+import com.alidevs.traill.utils.getAddress
+import kotlinx.android.synthetic.main.fragment_ride_details.view.*
 
 class RideDetailsFragment : Fragment() {
 	
@@ -27,6 +29,14 @@ class RideDetailsFragment : Fragment() {
 	): View {
 		binding = FragmentRideDetailsBinding.inflate(inflater, container, false)
 		
+		with(binding) {
+			ride?.let {
+				nameTextView.text = it.name
+				totalPriceTextView.text = it.fare.toString()
+				pickupPointTextView.text = it.origin!!.getAddress(requireActivity())
+				destinationTextView.text = it.destination!!.getAddress(requireActivity())
+			}
+		}
 		
 		
 		return binding.root

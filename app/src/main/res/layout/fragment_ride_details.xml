@@ -1,11 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/ride_details_fragment"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:id="@+id/ride_details_fragment"
 	android:layout_marginStart="20dp"
-	android:layout_marginTop="4dp"
+	android:layout_marginTop="20dp"
 	android:layout_marginEnd="20dp"
-	android:layout_marginBottom="12dp"
-	tools:context=".ui.home.RideDetails.RideDetailsFragment" />
+	android:layout_marginBottom="20dp"
+	android:background="@drawable/main_card_shape"
+	android:elevation="4dp"
+	tools:context=".ui.home.RideDetails.RideDetailsFragment">
+
+	<TextView
+		android:id="@+id/name_textView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:fontFamily="@font/lexend_font"
+		android:text="TextView"
+		android:textColor="@color/black"
+		android:textFontWeight="600"
+		android:textSize="16sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<View
+		android:id="@+id/view2"
+		style="@style/HorizontalLine"
+		android:layout_width="match_parent"
+		android:layout_gravity="center"
+		android:layout_marginTop="20dp"
+		android:layout_weight="1"
+		app:layout_constraintTop_toBottomOf="@id/name_textView" />
+
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:orientation="horizontal"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/view2">
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textView8"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lexend_font"
+				android:text="Model"
+				android:textAlignment="center"
+				android:textColor="@color/battleship_grey"
+				android:textSize="11sp" />
+
+			<TextView
+				android:id="@+id/vehicle_model_textView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lexend_font"
+				android:text="BMW X6"
+				android:textAlignment="center"
+				android:textColor="@color/black"
+				android:textFontWeight="500"
+				android:textSize="14sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/linearLayout2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textView10"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lexend_font"
+				android:text="Color"
+				android:textAlignment="center"
+				android:textColor="@color/battleship_grey"
+				android:textSize="11sp" />
+
+			<TextView
+				android:id="@+id/vehicle_color_textView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lexend_font"
+				android:text="Blue"
+				android:textAlignment="center"
+				android:textColor="@color/black"
+				android:textFontWeight="500"
+				android:textSize="14sp" />
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/textView12"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lexend_font"
+				android:text="Year"
+				android:textAlignment="center"
+				android:textColor="@color/battleship_grey"
+				android:textSize="11sp" />
+
+			<TextView
+				android:id="@+id/vehicle_year_textView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:fontFamily="@font/lexend_font"
+				android:text="2022"
+				android:textAlignment="center"
+				android:textColor="@color/black"
+				android:textFontWeight="500"
+				android:textSize="14sp" />
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/linearLayout3"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="32dp"
+		android:orientation="vertical"
+		app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+		<View
+			android:id="@+id/view3"
+			style="@style/HorizontalLine"
+			android:layout_width="match_parent"
+			android:layout_gravity="center"
+			android:layout_weight="1" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginStart="16dp"
+			android:layout_marginTop="16dp"
+			android:layout_marginEnd="16dp"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:layout_width="14dp"
+				android:layout_height="14dp"
+				android:layout_gravity="center"
+				app:srcCompat="@drawable/ic_donut_dot" />
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/lexend_font"
+					android:text="Pickup Point"
+					android:textColor="@color/battleship_grey"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/pickup_point_textView"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/lexend_font"
+					android:text="TextView"
+					android:textColor="@color/ebony_clay" />
+			</LinearLayout>
+		</LinearLayout>
+
+		<View
+			style="@style/HorizontalLine"
+			android:layout_width="match_parent"
+			android:layout_gravity="center"
+			android:layout_marginTop="12dp"
+			android:layout_marginBottom="12dp"
+			android:layout_weight="1" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_marginStart="16dp"
+			android:layout_marginEnd="16dp"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:layout_width="14dp"
+				android:layout_height="14dp"
+				android:layout_gravity="center"
+				app:srcCompat="@drawable/ic_donut_dot"
+				app:tint="@color/saffron_mango" />
+
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="16dp"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/lexend_font"
+					android:text="Destination"
+					android:textColor="@color/battleship_grey"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/destination_textView"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:fontFamily="@font/lexend_font"
+					android:text="TextView"
+					android:textColor="@color/ebony_clay" />
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+	<View
+		android:id="@+id/view4"
+		style="@style/HorizontalLine"
+		android:layout_width="match_parent"
+		android:layout_gravity="center"
+		android:layout_marginTop="16dp"
+		android:layout_weight="1"
+		app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"
+		android:layout_marginStart="20dp"
+		android:layout_marginBottom="16dp"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent">
+
+		<TextView
+			android:id="@+id/textView15"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/lexend_font"
+			android:text="Total Price"
+			android:textColor="@color/battleship_grey"
+			android:textSize="12sp" />
+
+		<TextView
+			android:id="@+id/total_price_textView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/lexend_font"
+			android:text="250.00 SR"
+			android:textColor="@color/black"
+			android:textFontWeight="600"
+			android:textSize="16sp" />
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
