@@ -1,6 +1,7 @@
 package com.alidevs.traill.data.model
 
 import com.google.firebase.firestore.GeoPoint
+import com.google.gson.Gson
 
 data class Ride(
 	var name: String? = null,
@@ -10,4 +11,10 @@ data class Ride(
 	var distance: Double? = null,
 	var fare: Double? = null,
 	var status: String = "Open"
-)
+) {
+	fun toJson(): String = Gson().toJson(this)
+	
+	companion object {
+		fun fromJson(json: String): Ride = Gson().fromJson(json, Ride::class.java)
+	}
+}

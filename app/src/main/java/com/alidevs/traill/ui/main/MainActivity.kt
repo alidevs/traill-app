@@ -2,10 +2,12 @@ package com.alidevs.traill.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.alidevs.traill.R
 import com.alidevs.traill.data.service.AuthService
 import com.alidevs.traill.databinding.ActivityMainBinding

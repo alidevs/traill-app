@@ -8,8 +8,8 @@
 	android:layout_marginEnd="20dp"
 	android:layout_marginBottom="12dp"
 	android:background="@drawable/main_card_shape"
-	android:elevation="4dp"
 	android:clickable="true"
+	android:elevation="4dp"
 	android:focusable="true"
 	android:foreground="?selectableItemBackground">
 
@@ -136,7 +136,7 @@
 				android:layout_width="14dp"
 				android:layout_height="14dp"
 				android:layout_gravity="center"
-				android:tint="@color/saffron_mango"
+				app:tint="@color/saffron_mango"
 				app:srcCompat="@drawable/ic_donut_dot" />
 
 			<LinearLayout
@@ -166,7 +166,7 @@
 	</LinearLayout>
 
 	<androidx.appcompat.widget.AppCompatButton
-		android:id="@+id/button"
+		android:id="@+id/row_request_to_join_button"
 		android:layout_width="0dp"
 		android:layout_height="31dp"
 		android:layout_marginTop="25dp"

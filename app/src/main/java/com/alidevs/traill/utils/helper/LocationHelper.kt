@@ -1,4 +1,4 @@
-package com.alidevs.traill.utils
+package com.alidevs.traill.utils.helper
 
 import android.app.Activity
 import android.content.Context

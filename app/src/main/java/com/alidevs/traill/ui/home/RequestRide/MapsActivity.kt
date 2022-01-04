@@ -11,7 +11,7 @@ import com.alidevs.traill.R
 import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.data.repository.AuthRepository
 import com.alidevs.traill.databinding.ActivityMapsBinding
-import com.alidevs.traill.utils.LocationHelper
+import com.alidevs.traill.utils.helper.LocationHelper
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

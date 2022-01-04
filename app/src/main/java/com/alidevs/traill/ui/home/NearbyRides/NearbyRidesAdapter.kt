@@ -6,9 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.databinding.NearbyRidesRowBinding
+import com.alidevs.traill.ui.home.RideDetails.RideRequestListener
 import com.alidevs.traill.utils.getAddress
 
-class NearbyRidesAdapter constructor(private var data: MutableList<Ride> = mutableListOf()) :
+class NearbyRidesAdapter constructor(
+	private var data: MutableList<Ride> = mutableListOf(),
+	private val rideRequestListener: RideRequestListener
+) :
 	RecyclerView.Adapter<NearbyRidesAdapter.ViewHolder>() {
 	
 	private lateinit var binding: NearbyRidesRowBinding
@@ -52,12 +56,11 @@ class NearbyRidesAdapter constructor(private var data: MutableList<Ride> = mutab
 			rowDestinationTextView.text = ride.destination!!.getAddress(context)
 			rowPickupPointTextView.text = ride.origin!!.getAddress(context)
 			
-			itemView.setOnClickListener(this@ViewHolder)
+			rowRequestToJoinButton.setOnClickListener(this@ViewHolder)
 		}
 		
 		override fun onClick(v: View?) {
+			rideRequestListener.onRideRequested(data[adapterPosition])
 		}
-		
 	}
-	
 }

@@ -5,6 +5,9 @@ plugins {
 	id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
 	compileSdk 31
 
@@ -33,6 +36,9 @@ android {
 	}
 	viewBinding {
 		enabled true
+	}
+	androidExtensions {
+		experimental = true
 	}
 }
 
