@@ -12,7 +12,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:fontFamily="@font/lexend_font"
-		android:text="Ride Requests"
+		android:text="@string/ride_requests"
 		android:textAllCaps="true"
 		android:textColor="@color/battleship_grey"
 		android:textFontWeight="500"

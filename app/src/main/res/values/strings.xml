@@ -1,8 +1,44 @@
 <resources>
 	<string name="app_name">traill</string>
 	<!-- TODO: Remove or change this placeholder text -->
-	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="title_activity_request_ride">RequestRideActivity</string>
-	<string name="title_activity_maps">MapsActivity</string>
-	<string name="GOOGLE_API_KEY">AIzaSyCdyN3bq3L8Tsko45Jn2uM5CTRdfR-CatM</string>
+	<string name="GOOGLE_API_KEY" translatable="false">AIzaSyCdyN3bq3L8Tsko45Jn2uM5CTRdfR-CatM</string>
+	<!-- Preference Titles -->
+	<string name="messages_header">Messages</string>
+	<string name="sync_header">Sync</string>
+
+	<!-- Messages Preferences -->
+	<string name="signature_title">Your signature</string>
+	<string name="reply_title">Default reply action</string>
+
+	<!-- Sync Preferences -->
+	<string name="sync_title">Sync email periodically</string>
+	<string name="attachment_title">Download incoming attachments</string>
+	<string name="attachment_summary_on">Automatically download attachments for incoming emails \t</string>
+	<string name="attachment_summary_off">Only download attachments when manually requested</string>
+	<string name="home">Home</string>
+	<string name="driver_dashboard">Driver Dashboard</string>
+	<string name="my_cars">My Cars</string>
+	<string name="more">More</string>
+	<string name="settings">Settings</string>
+	<string name="n_a">N/A</string>
+	<string name="current_location">Current Location</string>
+	<string name="destination">Destination</string>
+	<string name="create_ride_request">Create ride request</string>
+	<string name="pickup_point">Pickup Point</string>
+	<string name="request_to_join">Request to join</string>
+	<string name="request_ride">Request ride</string>
+	<string name="create_an_account">Create an account</string>
+	<string name="full_name">Full Name</string>
+	<string name="email_address">Email Address</string>
+	<string name="password">Password</string>
+	<string name="sign_up">Sign up</string>
+	<string name="login">Login</string>
+	<string name="nearby_rides">Nearby rides</string>
+	<string name="log_into_your_account">Log into your account</string>
+	<string name="register">Register</string>
+	<string name="forgot_password">Forgot password?</string>
+	<string name="ride_requests">Ride Requests</string>
+	<string name="title_activity_maps" translatable="false">MapsActivity</string>
+	<string name="total_price">Total Price</string>
+	<string name="accept_ride_request">Accept ride request</string>
 </resources>

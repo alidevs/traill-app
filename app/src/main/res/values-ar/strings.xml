@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">traill</string>
+	<string name="home">الصفحة الرئيسية</string>
+	<string name="driver_dashboard">"لوحة القيادة للسائق "</string>
+	<string name="my_cars">"سياراتي "</string>
+	<string name="more">"أكثر "</string>
+	<string name="settings">"إعدادات "</string>
+	<string name="n_a">غير متوفر</string>
+	<string name="current_location">الموقع الحالي</string>
+	<string name="destination">الوجهة</string>
+	<string name="create_ride_request">انشاء طلب</string>
+	<string name="messages_header">رسائل</string>
+	<string name="sync_header">تزامن</string>
+	<string name="signature_title">توقيعك</string>
+	<string name="reply_title">اجراء الرد الافتراضي</string>
+	<string name="sync_title">مزامنة البريد الإلكتروني بشكل دوري</string>
+	<string name="attachment_title">"حميل المرفقات الواردة "</string>
+	<string name="attachment_summary_on">"نزيل المرفقات تلقائيًا لرسائل البريد الإلكتروني الواردة "</string>
+	<string name="attachment_summary_off">"قم بتنزيل المرفقات فقط عند الطلب يدويًا "</string>
+	<string name="pickup_point">"نقطة الالتقاط "</string>
+	<string name="request_to_join">"طلب الانضمام "</string>
+	<string name="request_ride">"طلب رحلة "</string>
+	<string name="create_an_account">"انشئ حساب "</string>
+	<string name="full_name">"الاسم الكامل "</string>
+	<string name="email_address">"البريد الالكترونى "</string>
+	<string name="password">"كلمه السر "</string>
+	<string name="sign_up">تسجيل</string>
+	<string name="login">"تسجيل الدخول "</string>
+	<string name="nearby_rides">الرحلات القريبة</string>
+	<string name="log_into_your_account">"تسجيل الدخول إلى حسابك "</string>
+	<string name="register">تسجيل</string>
+	<string name="forgot_password">نسيت كلمة المرور؟</string>
+	<string name="ride_requests">طلبات الركوب</string>
+	<string name="total_price">السعر الكلي</string>
+	<string name="accept_ride_request">قبول طلب الركوب</string>
+</resources>

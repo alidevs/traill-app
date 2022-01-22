@@ -37,7 +37,7 @@
 		app:layout_constraintTop_toBottomOf="@id/name_textView" />
 
 	<LinearLayout
-		android:id="@+id/linearLayout"
+		android:id="@+id/car_details_linearLayout"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="10dp"
@@ -139,9 +139,9 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="32dp"
 		android:orientation="vertical"
-		app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+		app:layout_constraintTop_toBottomOf="@+id/car_details_linearLayout">
 
 		<View
 			android:id="@+id/view3"
@@ -174,7 +174,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
-					android:text="Pickup Point"
+					android:text="@string/pickup_point"
 					android:textColor="@color/battleship_grey"
 					android:textSize="11sp" />
 
@@ -220,7 +220,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
-					android:text="Destination"
+					android:text="@string/destination"
 					android:textColor="@color/battleship_grey"
 					android:textSize="11sp" />
 
@@ -245,6 +245,7 @@
 		app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
 
 	<LinearLayout
+		android:id="@+id/linearLayout4"
 		android:layout_width="wrap_content"
 		android:layout_height="0dp"
 		android:layout_marginStart="20dp"
@@ -258,7 +259,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:fontFamily="@font/lexend_font"
-			android:text="Total Price"
+			android:text="@string/total_price"
 			android:textColor="@color/battleship_grey"
 			android:textSize="12sp" />
 
@@ -272,5 +273,25 @@
 			android:textFontWeight="600"
 			android:textSize="16sp" />
 	</LinearLayout>
+
+	<androidx.appcompat.widget.AppCompatButton
+		android:id="@+id/accept_ride_button"
+		android:layout_width="0dp"
+		android:layout_height="34dp"
+		android:layout_marginStart="70dp"
+		android:layout_marginEnd="20dp"
+		android:layout_marginBottom="16dp"
+		android:background="@drawable/regular_button_selector"
+		android:fontFamily="@font/lexend_font"
+		android:foreground="?selectableItemBackground"
+		android:padding="0dp"
+		android:text="@string/request_ride"
+		android:textColor="@color/white"
+		android:textFontWeight="500"
+		android:textSize="12sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toEndOf="@+id/linearLayout4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

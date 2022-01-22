@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.alidevs.traill.R
 import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.databinding.NearbyRidesRowBinding
 import com.alidevs.traill.utils.getAddress
@@ -48,6 +49,7 @@ class DashboardAdapter(private val data: MutableList<Ride> = mutableListOf()) :
 		fun bind(ride: Ride) = with(binding) {
 			val context = itemView.context
 			
+			rowRequestToJoinButton.text = context.getString(R.string.accept_ride_request)
 			rowDriverNameTextView.text = ride.name
 			rowDistanceTextView.text = "${ride.distance} km"
 			rowPriceTextView.text = "${ride.fare} SR"
