@@ -16,7 +16,9 @@ import com.alidevs.traill.ui.home.RideDetails.RideRequestListener
 import com.alidevs.traill.ui.main.MainActivity
 import com.alidevs.traill.ui.main.NavBarFragment
 import com.alidevs.traill.utils.helper.LocationHelper
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class NearbyRidesFragment : Fragment(), RideRequestListener {
 	
@@ -37,16 +39,22 @@ class NearbyRidesFragment : Fragment(), RideRequestListener {
 		
 		val firestoreRepository = FirestoreRepository()
 		
-		val lastKnownLocation = LocationHelper.lastKnownLocation!!
+		val lastKnownLocation = LocationHelper.lastKnownLocation
 		
-		val disposable = firestoreRepository.getNearbyRides(lastKnownLocation)
-			.subscribe { ride ->
-				Log.d("NearbyRidesFragments", "onCreateView: $ride")
-				adapter.addRide(ride)
-				binding.nearbyRidesProgressBar.visibility = View.GONE
-			}
-		
-		disposables.add(disposable)
+		if (lastKnownLocation != null) {
+			firestoreRepository.getNearbyRides(lastKnownLocation)
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe ({ ride ->
+					adapter.addRide(ride)
+					binding.nearbyRidesProgressBar.visibility = View.GONE
+				}, { error ->
+					Toast.makeText(activity, error.message, Toast.LENGTH_SHORT).show()
+					binding.nearbyRidesProgressBar.visibility = View.GONE
+				}).also { disposables.add(it) }
+		} else {
+			Toast.makeText(activity, "Location not found", Toast.LENGTH_SHORT).show()
+		}
 		return binding.root
 	}
 	

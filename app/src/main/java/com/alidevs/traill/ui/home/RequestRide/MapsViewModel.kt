@@ -7,6 +7,7 @@ import com.alidevs.traill.data.model.Ride
 import com.alidevs.traill.data.model.directionsresponse.DirectionsResponse
 import com.alidevs.traill.data.repository.FirestoreRepository
 import com.alidevs.traill.data.repository.GoogleDirectionsRepository
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -18,7 +19,7 @@ class MapsViewModel : ViewModel() {
 	
 	private val googleDirectionsRepository = GoogleDirectionsRepository()
 	private val firestoreRepository = FirestoreRepository()
-
+	
 	private val disposables = CompositeDisposable()
 	
 	fun getDirections(origin: String, destination: String): MutableLiveData<DirectionsResponse> {
@@ -40,20 +41,18 @@ class MapsViewModel : ViewModel() {
 		
 		return liveData
 	}
-
-	fun createRide(ride: Ride) {
-		val disposable = firestoreRepository.createRide(ride)
+	
+	fun createRide(ride: Ride) = Completable.create { emitter ->
+		firestoreRepository.createRide(ride)
 			.subscribeOn(Schedulers.io())
 			.observeOn(AndroidSchedulers.mainThread())
 			.subscribe({
-				Log.d("MapsViewModel", "createRide: success")
+				emitter.onComplete()
 			}, {
-				Log.d("MapsViewModel", "createRide: ${it.message}")
-			})
-
-		disposables.add(disposable)
+				emitter.onError(it)
+			}).also { disposables.add(it) }
 	}
-
+	
 	override fun onCleared() {
 		super.onCleared()
 		disposables.clear()

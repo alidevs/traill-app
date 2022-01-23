@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.alidevs.traill.data.repository.FirestoreRepository
-import com.alidevs.traill.databinding.FragmentDriverDashboardBinding
+import com.alidevs.traill.databinding.FragmentDashboardBinding
 import io.reactivex.disposables.CompositeDisposable
 
 class DashboardFragment : Fragment() {
 	
-	private lateinit var binding: FragmentDriverDashboardBinding
+	private lateinit var binding: FragmentDashboardBinding
 	
 	private lateinit var adapter: DashboardAdapter
 	
@@ -21,7 +21,7 @@ class DashboardFragment : Fragment() {
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
 	): View {
-		binding = FragmentDriverDashboardBinding.inflate(inflater, container, false)
+		binding = FragmentDashboardBinding.inflate(inflater, container, false)
 		adapter = DashboardAdapter()
 		
 		binding.driverDashboardRecyclerView.adapter = adapter

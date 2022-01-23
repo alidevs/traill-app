@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.alidevs.traill.R
 import com.alidevs.traill.data.model.Ride
+import com.alidevs.traill.data.model.Trip
 import com.alidevs.traill.data.repository.AuthRepository
 import com.alidevs.traill.databinding.ActivityMapsBinding
 import com.alidevs.traill.utils.helper.LocationHelper
@@ -19,9 +20,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.firebase.firestore.GeoPoint
 import com.google.maps.android.PolyUtil
+import io.reactivex.disposables.CompositeDisposable
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 	
+	private val disposables = CompositeDisposable()
 	private val viewModel: MapsViewModel by viewModels()
 	private lateinit var binding: ActivityMapsBinding
 	
@@ -56,10 +59,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 				distance = trip.distance
 				fare = trip.fare
 			}
-
+			
 			viewModel.createRide(ride)
-			Toast.makeText(this, "createRide", Toast.LENGTH_SHORT).show()
-			finish()
+				.subscribe({
+					Toast.makeText(this, "createRide done", Toast.LENGTH_SHORT).show()
+					LocationHelper.trip = Trip()
+					finish()
+				}, {
+					Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+				}).also { disposables.add(it) }
 		}
 	}
 	

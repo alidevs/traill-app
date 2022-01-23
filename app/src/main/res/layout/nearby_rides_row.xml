@@ -28,7 +28,7 @@
 		app:layout_constraintTop_toTopOf="parent" />
 
 	<LinearLayout
-		android:id="@+id/linearLayout"
+		android:id="@+id/car_details_linearLayout"
 		android:layout_width="wrap_content"
 		android:layout_height="0dp"
 		android:layout_marginTop="16dp"
@@ -76,9 +76,9 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="1dp"
 		android:orientation="vertical"
-		app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+		app:layout_constraintEnd_toEndOf="@+id/car_details_linearLayout"
 		app:layout_constraintStart_toStartOf="@+id/row_driver_name_textView"
-		app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+		app:layout_constraintTop_toBottomOf="@+id/car_details_linearLayout">
 
 		<LinearLayout
 			android:layout_width="match_parent"
@@ -104,7 +104,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
-					android:text="Pickup Point"
+					android:text="@string/pickup_point"
 					android:textColor="@color/battleship_grey"
 					android:textSize="11sp" />
 
@@ -136,8 +136,8 @@
 				android:layout_width="14dp"
 				android:layout_height="14dp"
 				android:layout_gravity="center"
-				app:tint="@color/saffron_mango"
-				app:srcCompat="@drawable/ic_donut_dot" />
+				app:srcCompat="@drawable/ic_donut_dot"
+				app:tint="@color/saffron_mango" />
 
 			<LinearLayout
 				android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:fontFamily="@font/lexend_font"
-					android:text="Destination"
+					android:text="@string/destination"
 					android:textColor="@color/battleship_grey"
 					android:textSize="11sp" />
 
@@ -174,7 +174,7 @@
 		android:background="@drawable/regular_button_selector"
 		android:fontFamily="@font/lexend_font"
 		android:foreground="?selectableItemBackground"
-		android:text="Request to join"
+		android:text="@string/request_to_join"
 		android:textAllCaps="true"
 		android:textColor="@color/white"
 		android:textFontWeight="500"
