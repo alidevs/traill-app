@@ -12,5 +12,7 @@ class AuthRepository {
 	fun register(user: UserModel) = authService.register(user)
 
 	fun getCurrentUser() = authService.getCurrentUser()
+	
+	fun updateUserDisplayName(displayName: String) = authService.updateUserDisplayName(displayName)
 
 }

@@ -2,12 +2,11 @@ package com.alidevs.traill.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import com.alidevs.traill.R
 import com.alidevs.traill.data.service.AuthService
 import com.alidevs.traill.databinding.ActivityMainBinding
@@ -15,12 +14,14 @@ import com.alidevs.traill.databinding.NavHeaderBinding
 import com.alidevs.traill.ui.auth.AuthActivity
 import com.alidevs.traill.ui.dashboard.DashboardFragment
 import com.alidevs.traill.ui.home.HomeFragment
-import com.alidevs.traill.ui.profile.ProfileFragment
+import com.alidevs.traill.ui.home.HomeViewModel
+import com.alidevs.traill.ui.settings.SettingsFragment
 import com.google.android.material.navigation.NavigationView
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 	
+	private val viewModel: HomeViewModel by viewModels()
 	private lateinit var binding: ActivityMainBinding
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +52,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 	override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
 		when (menuItem.itemId) {
 			R.id.menu_home_item -> HomeFragment.newInstance()
-			R.id.menu_profile_item -> ProfileFragment.newInstance()
+//			R.id.menu_profile_item -> ProfileFragment.newInstance()
+			R.id.settings_item -> SettingsFragment()
 			R.id.driver_dashboard_item -> DashboardFragment.newInstance()
 			else -> null
 		}?.let { fragment ->

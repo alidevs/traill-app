@@ -11,15 +11,17 @@
 
 		<EditTextPreference
 			android:icon="@drawable/ic_email_icon"
+			app:enabled="false"
 			app:key="email"
 			app:title="Email"
 			app:useSimpleSummaryProvider="true" />
-
 		<EditTextPreference
-			android:icon="@drawable/ic_driver_icon"
-			app:key="role"
-			app:title="Role"
+			android:key="phoneNumber"
+			android:selectAllOnFocus="true"
+			android:singleLine="true"
+			android:title="Phone Number"
 			app:useSimpleSummaryProvider="true" />
+
 	</PreferenceCategory>
 
 	<PreferenceCategory app:title="App">
@@ -30,7 +32,8 @@
 			android:entryValues="@array/languages"
 			android:icon="@drawable/ic_language_icon"
 			android:key="languages_listPreference"
-			android:title="App Language" />
+			android:title="App Language"
+			app:useSimpleSummaryProvider="true" />
 	</PreferenceCategory>
 
 <!--	TODO: Dark mode -->

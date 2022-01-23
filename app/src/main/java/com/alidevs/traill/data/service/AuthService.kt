@@ -11,7 +11,7 @@ import io.reactivex.CompletableEmitter
 class AuthService private constructor() {
 	
 	private val auth = Firebase.auth
-	val firestore = Firebase.firestore
+	private val firestore = Firebase.firestore
 	
 	fun register(user: UserModel) = Completable.create { emitter ->
 		auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -72,6 +72,23 @@ class AuthService private constructor() {
 						}
 				} else {
 					emitter.onError(setTask.exception!!)
+				}
+			}
+	}
+	
+	fun updateUserDisplayName(displayName: String) = Completable.create { emitter ->
+		val currentUser = auth.currentUser!!
+		val profileUpdates = UserProfileChangeRequest.Builder()
+			.setDisplayName(displayName)
+			.build()
+		
+		auth.currentUser
+			?.updateProfile(profileUpdates)
+			?.addOnCompleteListener { updateProfileTask ->
+				if (updateProfileTask.isSuccessful) {
+					emitter.onComplete()
+				} else {
+					emitter.onError(updateProfileTask.exception!!)
 				}
 			}
 	}

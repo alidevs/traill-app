@@ -3,6 +3,7 @@ package com.alidevs.traill.ui.auth
 import androidx.lifecycle.ViewModel
 import com.alidevs.traill.data.model.UserModel
 import com.alidevs.traill.data.repository.AuthRepository
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -60,9 +61,23 @@ class AuthViewModel : ViewModel() {
 
 		disposables.add(disposable)
 	}
+	
+	fun updateUserDisplayName(newName: String) = Completable.create { emitter ->
+		val disposable = repository.updateUserDisplayName(newName)
+			.subscribeOn(Schedulers.io())
+			.observeOn(AndroidSchedulers.mainThread())
+			.subscribe({
+				emitter.onComplete()
+			}, {
+				emitter.onError(it)
+			})
+
+		disposables.add(disposable)
+	}
 
 	override fun onCleared() {
 		super.onCleared()
 		disposables.dispose()
 	}
+	
 }

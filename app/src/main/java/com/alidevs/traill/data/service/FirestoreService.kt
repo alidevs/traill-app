@@ -49,7 +49,8 @@ class FirestoreService private constructor() {
 			)
 		}
 		db.collection("rides")
-			.add(updatedRide)
+			.document(updatedRide.id)
+			.set(updatedRide)
 			.addOnCompleteListener { task ->
 				if (task.isSuccessful) {
 					emitter.onComplete()
@@ -69,6 +70,7 @@ class FirestoreService private constructor() {
 		for (bound in bounds) {
 			val query = db.collection("rides")
 				.orderBy("geoHash")
+				.whereEqualTo("status", "Open")
 				.startAt(bound.startHash)
 				.endAt(bound.endHash)
 			
