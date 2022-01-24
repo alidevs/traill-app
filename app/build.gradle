@@ -86,4 +86,11 @@ dependencies {
 
 	// Lingver
 	implementation "com.github.YarikSOffice:lingver:1.3.0"
+
+	// Firebase Messaging
+	implementation 'com.google.firebase:firebase-messaging-ktx:23.0.0'
+
+	// Alerter
+	implementation 'com.github.tapadoo:alerter:7.2.4'
+
 }
